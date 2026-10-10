@@ -88,7 +88,9 @@ async def answer(c: CallbackQuery):
     await c.answer()
 
 async def main():
-    await dp.start_polling(Bot(TOKEN))
+    bot = Bot(TOKEN)
+    await bot.delete_webhook(drop_pending_updates=False)
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
